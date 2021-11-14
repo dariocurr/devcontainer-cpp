@@ -3,7 +3,7 @@
 # select image
 # see here for image contents: https://github.com/microsoft/vscode-dev-containers/tree/v0.195.0/containers/cpp/.devcontainer/base.Dockerfile
 ARG VARIANT="debian-11"
-FROM mcr.microsoft.com/vscode/devcontainers/cpp:0-${VARIANT}
+FROM mcr.microsoft.com/vscode/devcontainers/cpp:${VARIANT}
 LABEL author="dariocurr@gmail.com" maintainer="dariocurr@gmail.com" version="0.0.1"
 
 # update apt
