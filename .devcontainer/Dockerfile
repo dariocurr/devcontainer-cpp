@@ -12,4 +12,4 @@ RUN apt update \
 	&& export DEBIAN_FRONTEND=noninteractive
 
 # add zsh configuration
-COPY .devcontainer/.zshrc .
+COPY .devcontainer/.zshrc /home/vscode/
