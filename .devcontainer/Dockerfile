@@ -11,5 +11,9 @@ RUN apt update \
 	&& apt upgrade -y \
 	&& export DEBIAN_FRONTEND=noninteractive
 
-# add zsh configuration
-COPY .devcontainer/.zshrc /home/vscode/
+# add zsh configuration and replace oh-my-zsh with antigen
+USER vscode
+WORKDIR /home/vscode/
+RUN rm -r .oh-my-zsh \
+	&& git clone https://github.com/zsh-users/antigen.git .antigen
+COPY .devcontainer/.zshrc .
