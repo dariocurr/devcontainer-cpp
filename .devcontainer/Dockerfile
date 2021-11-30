@@ -15,5 +15,5 @@ RUN apt -qq update \
 USER vscode
 WORKDIR /home/vscode/
 RUN rm -r .oh-my-zsh \
-	&& git clone -q https://github.com/zsh-users/antigen.git .antigen \
-	&& wget -q -O .zshrc https://raw.githubusercontent.com/dariocurr/.zshrc/main/.zshrc
+	&& git clone -q https://github.com/zsh-users/antigen.git .antigen
+ADD --chown=vscode https://git.io/JMakD .zshrc
