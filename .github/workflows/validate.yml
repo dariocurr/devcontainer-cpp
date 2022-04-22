@@ -21,14 +21,11 @@ jobs:
       - name: Checkout
         uses: actions/checkout@main
 
-      - name: Set up Docker Buildx
-        uses: docker/setup-buildx-action@master
-
       - name: Build the Docker image
         uses: docker/build-push-action@master
         with:
           push: false
-          context: ./devcontainer
+          context: ./.devcontainer
 
       - name: Merge dev with main branch
         uses: devmasx/merge-branch@master
