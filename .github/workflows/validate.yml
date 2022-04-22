@@ -19,10 +19,13 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
-        uses: actions/checkout@v2
+        uses: actions/checkout@main
 
       - name: Build the Docker image
-        run: docker build . --file .devcontainer/Dockerfile
+        uses: docker/build-push-action@master
+        with:
+          push: false
+          context: ./.devcontainer
 
       - name: Merge dev with main branch
         uses: devmasx/merge-branch@master
