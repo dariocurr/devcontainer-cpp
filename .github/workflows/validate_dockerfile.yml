@@ -13,10 +13,11 @@ on:
   pull_request:
     branches:
       - main
+  workflow_dispatch:
 
 jobs:
   validate_dockerfile:
-    uses: dariocurr/actions/workflows/validate_dockerfile.yml@main
+    uses: dariocurr/actions/.github/workflows/validate_dockerfile.yml@main
     with:
       dockerfile: ./.devcontainer
       merge: true
