@@ -16,7 +16,7 @@ on:
 
 jobs:
   validate_dockerfile:
-    uses: dariocurr/actions/workflows/validate_dockerfile.yml
+    uses: dariocurr/actions/workflows/validate_dockerfile.yml@main
     with:
       dockerfile: ./.devcontainer
       merge: true
