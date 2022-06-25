@@ -1,8 +1,8 @@
 # for format details, see https://docs.docker.com/engine/reference/builder/
 
+ARG VARIANT="latest"
+
 # select image
-# see here for image contents: https://github.com/microsoft/vscode-dev-containers/tree/v0.195.0/containers/cpp/.devcontainer/base.Dockerfile
-ARG VARIANT="debian-11"
 FROM mcr.microsoft.com/vscode/devcontainers/cpp:${VARIANT}
 LABEL author="dariocurr@gmail.com" maintainer="dariocurr@gmail.com" version="0.0.1"
 
@@ -11,9 +11,12 @@ RUN apt -qq update \
 	&& apt -qq upgrade -y \
 	&& export DEBIAN_FRONTEND=noninteractive
 
+# read and change user
+ARG USER
+USER ${USER}
+
 # add zsh configuration and replace oh-my-zsh with antigen
-USER vscode
-WORKDIR /home/vscode/
-RUN rm -r .oh-my-zsh \
-	&& git clone -q https://github.com/zsh-users/antigen.git .antigen
-ADD --chown=vscode https://gist.githubusercontent.com/dariocurr/9792ae1fb6ddf736d8fea9e20eb13e26/raw/ .zshrc
+WORKDIR /home/${USER}/
+RUN rm -r .oh-my-zsh; \
+	git clone -q https://github.com/zsh-users/antigen.git .antigen;
+ADD --chown=${USER} https://gist.githubusercontent.com/dariocurr/9792ae1fb6ddf736d8fea9e20eb13e26/raw/ .zshrc
