@@ -4,13 +4,14 @@
 	"build": {
 		"dockerfile": "Dockerfile",
 		"context": "..",
-		// avoid specifying args here to prevent errors when using classic docker build
+		"args": {
+			"USER": "vscode"
+		}
 	},
-	"runArgs": [ "--cap-add=SYS_PTRACE", "--security-opt", "seccomp=unconfined"],
-	"extensions": [
-		"ms-vscode.cpptools-extension-pack",
-		"formulahendry.code-runner",
+	"runArgs": [
+		"--cap-add=SYS_PTRACE",
+		"--security-opt",
+		"seccomp=unconfined"
 	],
-	"remoteUser": "vscode",
-
+	"remoteUser": "vscode"
 }
